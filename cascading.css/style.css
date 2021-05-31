@@ -1,0 +1,106 @@
+body
+{font-family: Arial; font-size: 1em;  color: hsl(0, 0%, 18%);margin-left:1%;  
+    background-color:rgb(245, 245, 245); border-color:rgba(255, 255, 255, 0.733);
+}
+
+div#navbar
+{ 
+margin-top: 1%;
+border-left: hidden; border-right: hidden;
+position:relative; width: 100%;
+}
+div#navbar ul {list-style-type: none;}
+div#navbar ul li
+{
+ border-top: hidden;
+border-bottom: hidden;
+ width: 100%; 
+}
+
+div#navbar ul li a {text-decoration: none;
+display: block; padding: 1em; text-align: center;text-shadow: .25;}
+
+
+
+div#salesTable
+{
+    padding: 3%;
+    position:relative;  
+    display: block;
+    margin-left: 5%;
+ 
+}
+div#salesTable ul { list-style-type:circle ;}
+div#salesTable ul li
+{
+    padding: .5%;
+
+}
+div#navbar2
+{ 
+    padding: 2%;
+    position:relative;  
+    display: block;
+    margin-left: 10%;
+}
+div#navbar2 ul {list-style-type: none;}
+div#navbar2 ul li
+{
+  text-decoration: underline;
+ border-top: hidden;
+border-bottom: hidden;
+ width: 100%; float: left; padding: 0.5em;  
+}
+img {
+    text-align-last: center;
+    display: block;
+}
+main {
+    display: block;
+    background-color: lavender;
+}
+a#sale
+{
+    padding-top: 1%;
+    text-align: center;
+    display: block;
+}
+header {
+    align-self: center;
+    align-items: center;
+    display: block;
+    background-color: white;
+    width: 100%;
+    height: 100px;
+ }
+ p{
+  text-align: center;
+  padding: 2%;
+  padding-top: 1%;
+  display: block;
+  position:relative;  
+
+}
+
+h3#location{
+  text-align: center;
+  text-decoration: underline;
+  color: white;
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0.432);
+  padding: .5%;
+}
+
+#totalCook
+{
+text-decoration:underline;
+text-align: center;
+}
+footer{
+  position: fixed;
+  padding: 10px 10px 0px 10px;
+  bottom: 0;
+  width: 100%;
+  background-color: cadetblue;
+  text-align: center;
+}
