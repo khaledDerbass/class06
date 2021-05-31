@@ -1,4 +1,37 @@
-body
+* {
+    font-family: Arial, sans-serif;
+  }
+  
+  table {
+    border: solid;
+    border-color: black;
+    border-width: 5px;
+    border-collapse: collapse;
+    padding-left: 5%;
+    margin-top: 5%;
+    padding: 3%;
+
+  }
+  
+th,td,tr
+{
+    border: solid;
+    border-color: black;
+    border-width: 5px;
+    border-collapse: collapse;
+    padding-left: 5%;
+    margin-top: 5%;
+
+}
+footer{
+    position: fixed;
+    padding: 10px 10px 0px 10px;
+    bottom: 0;
+    width: 100%;
+    background-color: cadetblue;
+    text-align: center;
+  }
+  body
 {font-family: Arial; font-size: 1em;  color: hsl(0, 0%, 18%);margin-left:1%;  
     background-color:rgb(245, 245, 245); border-color:rgba(255, 255, 255, 0.733);
 }

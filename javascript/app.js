@@ -1,137 +1,60 @@
 'use strict';
 
-var hours = ['6 AM ', '7 AM', '8 AM ', '9 AM', '10 AM ', '11 AM', '12 PM ', '1 PM', '2 PM ', '3 PM', '4 PM ', '5 PM', '6 PM ', '7 PM'];
+var salesTime = ['6 AM ', '7 AM', '8 AM ', '9 AM', '10 AM ', '11 AM', '12 PM ', '1 PM', '2 PM ', '3 PM', '4 PM ', '5 PM', '6 PM ', '7 PM'];
+var salesLocations = ['Seattle','Tokyo','Dubai','Paris','lima'];
 
 
-//parent.appendChild(ulElement);
-
-function showTable(locObj) 
+function SalesTimes (nameSal,minSal,maxSal,AvgSal,TotalSal)
 {
+    this.location=nameSal;
+    this.minVal=minSal;
+    this.maxVal=maxSal;
+    this.avg=AvgSal;
+    this.totalOf=TotalSal;
 
-    var parent= document.getElementById('salesTable');
-var articleElement=document.createElement('article');
-var ulElement = document.createElement('ul');
-articleElement.appendChild(ulElement);
-    let name = document.createElement('h3');
-    name.setAttribute("id", "location");
-    name.textContent = locObj.nameObj;
 
-    parent.appendChild(name);
-
-    for (let x = 0; x < hours.length; x++) {
-
-        let liElement = document.createElement('li');
-      
-        liElement.textContent = hours[x]+' : '+locObj.cookEachHour[x];
-
-        // append
-        ulElement.appendChild(liElement);
+    SalesTimes.prototype.randomSales=function () {
+    for (var i = 0; i < hours.length; i++) 
+    {
+        this.salPerHour[i] = Math.floor(getRndInteger(this.minVal, this.maxVal)*this.avg);
+        this.totalOf+=this.salPerHour[i];
     }
-    let totalcook = document.createElement('li');
-    totalcook.setAttribute("id", "totalCook");
-    ulElement.appendChild(totalcook);
-    totalcook.textContent = 'Total : '+ locObj.total;
-
-    parent.appendChild(articleElement);
-
-}
-
-
-let Seattle =
-{   
-    nameObj: "Seattle",
-    minCust: 23,
-    maxCust: 65,
-    AvgCookie: 6.3,
-    total:0 ,
-    cookEachHour: [],
-    RandCust: function () {
-        for (var i = 0; i < hours.length; i++) {
-            this.cookEachHour[i] = Math.floor(getRndInteger(this.minCust, this.maxCust)*this.AvgCookie);
-            this.total+=this.cookEachHour[i];
-        }
     }
-    
-}
-Seattle.RandCust();
-showTable(Seattle);
-//console.log(Seattle.cookEachHour);
+    salesTime.push(this);
 
 
-
-let Tokyo={
-
-nameObj: "Tokyo",
- minCust:3,
- maxCust:24,
- AvgCookie: 1.2,
- total:0 ,
- cookEachHour: [],
- RandCust: function () {
-    for (var i = 0; i < hours.length; i++) {
-        this.cookEachHour[i] = Math.floor(getRndInteger(this.minCust, this.maxCust)*this.AvgCookie);
-        this.total+=this.cookEachHour[i];
-    }
-}
 }
 
-Tokyo.RandCust();
-showTable(Tokyo);
+var parent= document.getElementById('salesTable');
 
-let Dubai={
-nameObj: "Dubai",
- minCust:11,
- maxCust:38,
- AvgCookie: 3.7,
- total:0 ,
- cookEachHour: [],
- RandCust: function () {
-    for (var i = 0; i < hours.length; i++) {
-        this.cookEachHour[i] = Math.floor(getRndInteger(this.minCust, this.maxCust)*this.AvgCookie);
-        this.total+=this.cookEachHour[i];
-    }
-}
-}
+var tableRest = document.createElement('table');
 
-Dubai.RandCust();
-showTable(Dubai);
 
-let Paris={
-nameObj: "Paris",  
- minCust:20,
- maxCust:38,
- AvgCookie: 2.3,
- total:0 ,
- cookEachHour: [],
- RandCust: function () {
-    for (var i = 0; i < hours.length; i++) {
-        this.cookEachHour[i] = Math.floor(getRndInteger(this.minCust, this.maxCust)*this.AvgCookie);
-        this.total+=this.cookEachHour[i];
-    }
-}
+parent.appendChild(tableRest);
+
+var rowHead = document.createElement('tr');
+
+tableRest.appendChild(rowHead);
+
+
+for (let z=0;z<salesTime.length;z++)
+{
+    let thElement=document.createElement('th');
+    rowHead.appendChild(thElement);
+    thElement.textContent=salesTime[z];
 }
 
-Paris.RandCust();
-showTable(Paris);
+for(let j=0;j<salesLocations.length;j++)
+{
+    let locationsRow=document.createElement('tr');
+    tableRest.appendChild(locationsRow);
 
+    let nametd=document.createElement('td');
+    locationsRow.appendChild(nametd);
+    nametd.textContent=salesLocations[j];
 
-let lima={
- nameObj: "lima",   
- minCust:2,
- maxCust:16,
- AvgCookie: 4.6,
- total: 0,
- cookEachHour: [],
- RandCust: function () {
-    for (var i = 0; i < hours.length; i++) {
-        this.cookEachHour[i] = Math.floor(getRndInteger(this.minCust, this.maxCust)*this.AvgCookie);
-        this.total+=this.cookEachHour[i];
-    }
-}
 }
 
-lima.RandCust();
-showTable(lima);
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
