@@ -2,27 +2,25 @@
     font-family: Arial, sans-serif;
   }
   
-  table {
-    border: solid;
-    border-color: black;
-    border-width: 5px;
-    border-collapse: collapse;
-    padding-left: 5%;
-    margin-top: 5%;
-    padding: 3%;
-
-  }
   
-th,td,tr
-{
-    border: solid;
-    border-color: black;
-    border-width: 5px;
-    border-collapse: collapse;
-    padding-left: 5%;
-    margin-top: 5%;
+#salesTable td, #salesTable th {
+    border: 5px solid rgba(221, 221, 221, 0);
+    padding: 20px;
+    text-align: center;
+  }
 
-}
+#salesTable tr:nth-child(even){background-color: #f2f2f2;}
+  
+#salesTable tr:hover {background-color: #ddd;}
+  
+#salesTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: cadetblue;
+    color: white;
+  }
+
 footer{
     position: fixed;
     padding: 10px 10px 0px 10px;
@@ -50,22 +48,6 @@ border-bottom: hidden;
 div#navbar ul li a {text-decoration: none;
 display: block; padding: 1em; text-align: center;text-shadow: .25;}
 
-
-
-div#salesTable
-{
-    padding: 3%;
-    position:relative;  
-    display: block;
-    margin-left: 5%;
- 
-}
-div#salesTable ul { list-style-type:circle ;}
-div#salesTable ul li
-{
-    padding: .5%;
-
-}
 div#navbar2
 { 
     padding: 2%;
