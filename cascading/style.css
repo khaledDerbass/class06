@@ -78,11 +78,15 @@ a#sale
     display: block;
 }
 header {
-    align-self: center;
-    align-items: center;
+  text-align: center;
+
     display: block;
     background-color: white;
     width: 100%;
     height: 100px;
  }
- 
+ main
+ {
+   text-align: center;
+   padding: .5%;
+ }
