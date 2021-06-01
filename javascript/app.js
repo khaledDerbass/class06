@@ -64,7 +64,7 @@ SalesTimes.prototype.renderSales = function () {
         locatName=document.createElement('td');
         locationsRow.appendChild(locatName);
         locatName.textContent=this.salPerHour[j];
-        
+
     }
 
     let tableBody1=document.createElement('td');
@@ -88,19 +88,24 @@ for(let i=0;i<salesLocations.length;i++)
     salesLocations[i].renderSales();
 }
 
-let tableRow2 = document.createElement('tr');
+    let tableRow2 = document.createElement('tr');
     tableRest.appendChild(tableRow2);
     let tableBody2 = document.createElement('td');
     tableRow2.appendChild(tableBody2);
     tableBody2.textContent = 'Totals';
 
-for (let i = 0; i < hours.length; i++) {
+for (let i = 0; i < salesTime.length; i++) {
 
         tableRest.appendChild(tableRow2);
         let tableBody3 = document.createElement('td');
         tableRow2.appendChild(tableBody3);
-        tableBody3.textContent=salesLocations[i].renderSales;
     }
+
+    let tFooter1 = document.createElement('th');
+    tableRow2.appendChild(tFooter1);
+    tFooter1.textContent = totalOfDaily;
+
+
 
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
