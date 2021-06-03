@@ -133,7 +133,7 @@ footTotal();
 
     let newForm= document.getElementById("salesForm");
 
-    newForm.addEventListener('Submit',submitButt);
+    newForm.addEventListener('submit',submitButt);
 
     function submitButt(event)
     {
@@ -146,7 +146,7 @@ footTotal();
      let maxParam=Number(event.target.maxField.value);
      let avgParam=Number(event.target.avgField.value);
   
-      let locNamMod=new new SalesTimes(newLocNam,minParam,maxParam,avgParam);
+      let locNamMod=new SalesTimes(newLocNam,minParam,maxParam,avgParam);
   
      if (locNamMod.minParam > newAddedLocation.maxParam){
       document.getElementById("salesForm").reset();
