@@ -4,6 +4,7 @@ var salesTime = ['6 AM ', '7 AM', '8 AM ', '9 AM', '10 AM ', '11 AM', '12 PM ', 
 //var salesLocations = ['Seattle','Tokyo','Dubai','Paris','lima'];
 var salesLocations=[];
 var totalOfDaily=0;
+
 function SalesTimes (nameSal,minSal,maxSal,AvgSal)
 {
     this.location=nameSal;
@@ -42,7 +43,7 @@ tableHeader2.textContent='Daily Location Total';
 SalesTimes.prototype.randomSales=function () {
     for (let i = 0; i < salesTime.length; i++) 
     {
-        this.salPerHour[i] = Math.floor(getRndInteger(this.minVal, this.maxVal)*this.avg);
+        this.salPerHour.push(Math.floor(getRndInteger(this.minVal, this.maxVal)*this.avg));
         this.totalOf+=this.salPerHour[i];
     }
     totalOfDaily+=this.totalOf;
@@ -88,23 +89,36 @@ for(let i=0;i<salesLocations.length;i++)
     salesLocations[i].renderSales();
 }
 
-    let tableRow2 = document.createElement('tr');
+let tableRow2 = document.createElement('tr');
+tableRest.appendChild(tableRow2);
+let tableBody2 = document.createElement('th');
+tableRow2.appendChild(tableBody2);
+tableBody2.textContent = 'Totals';
+
+
+    for(let y=0;y<salesTime.length;y++){
+        let totalOfHours=0;
+    for (let i = 0; i < salesLocations.length; i++) 
+    {
+
+        totalOfHours+=salesLocations[i].salPerHour[y];
+        totalOfDaily+=salesLocations[i].salPerHour[y];
+
+    }
     tableRest.appendChild(tableRow2);
-    let tableBody2 = document.createElement('td');
-    tableRow2.appendChild(tableBody2);
-    tableBody2.textContent = 'Totals';
-
-for (let i = 0; i < salesTime.length; i++) {
-
-        tableRest.appendChild(tableRow2);
-        let tableBody3 = document.createElement('td');
-        tableRow2.appendChild(tableBody3);
+    let tableBody3 = document.createElement('th');
+    tableRow2.appendChild(tableBody3);
+    tableBody3.textContent=totalOfHours;
     }
 
+
+
+    
+    
     let tFooter1 = document.createElement('th');
     tableRow2.appendChild(tFooter1);
     tFooter1.textContent = totalOfDaily;
-
+    
 
 
 function getRndInteger(min, max) {
