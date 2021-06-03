@@ -88,6 +88,8 @@ for(let i=0;i<salesLocations.length;i++)
     salesLocations[i].randomSales();
     salesLocations[i].renderSales();
 }
+function footTotal ()
+{
 
 let tableRow2 = document.createElement('tr');
 tableRest.appendChild(tableRow2);
@@ -118,9 +120,48 @@ tableBody2.textContent = 'Totals';
     let tFooter1 = document.createElement('th');
     tableRow2.appendChild(tFooter1);
     tFooter1.textContent = totalOfDaily;
-    
+}
+footTotal();
 
 
-function getRndInteger(min, max) {
+    function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+///////////////////
+
+
+    let newForm= document.getElementById("salesForm");
+
+    newForm.addEventListener('Submit',submitButt);
+
+    function submitButt(event)
+    {
+
+    event.preventDefault();
+  
+  
+     let newLocNam=event.target.nameField.value;
+     let minParam=Number(event.target.minField.value);
+     let maxParam=Number(event.target.maxField.value);
+     let avgParam=Number(event.target.avgField.value);
+  
+      let locNamMod=new new SalesTimes(newLocNam,minParam,maxParam,avgParam);
+  
+     if (locNamMod.minParam > newAddedLocation.maxParam){
+      document.getElementById("salesForm").reset();
+
+      alert("Oops, try again MIN value should be less than the MAX value");
+      
+      }
+  
+      table.removeChild(table.lastChild);
+
+      locNamMod.randomSales();
+      locNamMod.renderSales();
+
+         footTotal();
+
+      document.getElementById("salesForm").reset();
+
 }
