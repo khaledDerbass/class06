@@ -4,6 +4,7 @@ var salesTime = ['6 AM ', '7 AM', '8 AM ', '9 AM', '10 AM ', '11 AM', '12 PM ', 
 //var salesLocations = ['Seattle','Tokyo','Dubai','Paris','lima'];
 var salesLocations=[];
 var totalOfDaily=0;
+
 function SalesTimes (nameSal,minSal,maxSal,AvgSal)
 {
     this.location=nameSal;
@@ -42,7 +43,7 @@ tableHeader2.textContent='Daily Location Total';
 SalesTimes.prototype.randomSales=function () {
     for (let i = 0; i < salesTime.length; i++) 
     {
-        this.salPerHour[i] = Math.floor(getRndInteger(this.minVal, this.maxVal)*this.avg);
+        this.salPerHour.push(Math.floor(getRndInteger(this.minVal, this.maxVal)*this.avg));
         this.totalOf+=this.salPerHour[i];
     }
     totalOfDaily+=this.totalOf;
@@ -87,26 +88,80 @@ for(let i=0;i<salesLocations.length;i++)
     salesLocations[i].randomSales();
     salesLocations[i].renderSales();
 }
+function footTotal ()
+{
 
-    let tableRow2 = document.createElement('tr');
+let tableRow2 = document.createElement('tr');
+tableRest.appendChild(tableRow2);
+let tableBody2 = document.createElement('th');
+tableRow2.appendChild(tableBody2);
+tableBody2.textContent = 'Totals';
+
+
+    for(let y=0;y<salesTime.length;y++){
+        let totalOfHours=0;
+    for (let i = 0; i < salesLocations.length; i++) 
+    {
+
+        totalOfHours+=salesLocations[i].salPerHour[y];
+        totalOfDaily+=salesLocations[i].salPerHour[y];
+
+    }
     tableRest.appendChild(tableRow2);
-    let tableBody2 = document.createElement('td');
-    tableRow2.appendChild(tableBody2);
-    tableBody2.textContent = 'Totals';
-
-for (let i = 0; i < salesTime.length; i++) {
-
-        tableRest.appendChild(tableRow2);
-        let tableBody3 = document.createElement('td');
-        tableRow2.appendChild(tableBody3);
+    let tableBody3 = document.createElement('th');
+    tableRow2.appendChild(tableBody3);
+    tableBody3.textContent=totalOfHours;
     }
 
+
+
+    
+    
     let tFooter1 = document.createElement('th');
     tableRow2.appendChild(tFooter1);
     tFooter1.textContent = totalOfDaily;
+}
+footTotal();
 
 
-
-function getRndInteger(min, max) {
+    function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+///////////////////
+
+
+    let newForm= document.getElementById("salesForm");
+
+    newForm.addEventListener('Submit',submitButt);
+
+    function submitButt(event)
+    {
+
+    event.preventDefault();
+  
+  
+     let newLocNam=event.target.nameField.value;
+     let minParam=Number(event.target.minField.value);
+     let maxParam=Number(event.target.maxField.value);
+     let avgParam=Number(event.target.avgField.value);
+  
+      let locNamMod=new new SalesTimes(newLocNam,minParam,maxParam,avgParam);
+  
+     if (locNamMod.minParam > newAddedLocation.maxParam){
+      document.getElementById("salesForm").reset();
+
+      alert("Oops, try again MIN value should be less than the MAX value");
+      
+      }
+  
+      table.removeChild(table.lastChild);
+
+      locNamMod.randomSales();
+      locNamMod.renderSales();
+
+         footTotal();
+
+      document.getElementById("salesForm").reset();
+
 }
