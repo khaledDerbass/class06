@@ -138,30 +138,32 @@ footTotal();
     function submitButt(event)
     {
 
-    event.preventDefault();
+     event.preventDefault();
   
   
-     let newLocNam=event.target.nameField.value;
-     let minParam=Number(event.target.minField.value);
-     let maxParam=Number(event.target.maxField.value);
-     let avgParam=Number(event.target.avgField.value);
+     let newLocNam=event.target.nameOfLoc.value;
+     let minParam=Number(event.target.minCustomers.value);
+     let maxParam=Number(event.target.maxCustomers.value);
+     let avgParam=Number(event.target.avgCustomers.value);
   
       let locNamMod=new SalesTimes(newLocNam,minParam,maxParam,avgParam);
   
-     if (locNamMod.minParam > newAddedLocation.maxParam){
+     if (locNamMod.maxParam < newAddedLocation.minParam){
       document.getElementById("salesForm").reset();
 
       alert("Oops, try again MIN value should be less than the MAX value");
       
       }
   
-      table.removeChild(table.lastChild);
+      tableRest.removeChild(tableRest.lastChild);
 
       locNamMod.randomSales();
       locNamMod.renderSales();
 
-         footTotal();
+      footTotal();
+
 
       document.getElementById("salesForm").reset();
 
-}
+    }
+    document.getElementById("salesForm").reset();
